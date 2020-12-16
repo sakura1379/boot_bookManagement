@@ -3,12 +3,14 @@ package boot_bookmanage.java.controller;
 import boot_bookmanage.java.BookManagementApplication;
 import boot_bookmanage.java.FxmlView.MainFxmlView;
 import boot_bookmanage.java.service.ReaderService;
+import boot_bookmanage.java.utils.IconUtil;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -26,6 +28,8 @@ import java.util.ResourceBundle;
 public class ReaderAnalysisController implements Initializable{
     @FXML
     private StackPane departmentPieChart, rolePieChart;
+    @FXML
+    private Button returnButton;
 
     private String[] departments = {"信息管理学院", "电气工程学院", "航空工程学院", "交通工程学院",
             "计算机与软件学院", "经济管理学院", "商务贸易学院"};
@@ -33,6 +37,8 @@ public class ReaderAnalysisController implements Initializable{
 
     @Autowired
     ReaderService readerService;
+    @Autowired
+    IconUtil iconUtil;
 
     private ObservableList<PieChart.Data> pieChartData1 = FXCollections.observableArrayList();
 
@@ -40,6 +46,7 @@ public class ReaderAnalysisController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        iconUtil.setIcon(returnButton,"icon/return.png",35);
         initDepartmentPieChart();
         initRolePieChart();
     }

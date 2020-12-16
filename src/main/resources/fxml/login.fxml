@@ -14,7 +14,7 @@
         <Insets top="150" right="250" bottom="150" left="250"/>
     </padding>
 <!--    <GridPane AnchorPane.topAnchor="100" AnchorPane.leftAnchor="250" alignment="center" styleClass="login-card" vgap="15">-->
-    <GridPane StackPane.alignment="CENTER" alignment="center" styleClass="login-card" vgap="15" opacity="0.8">
+    <GridPane StackPane.alignment="CENTER" alignment="center" styleClass="btn-radius,login-card" vgap="15" opacity="0.8">
         <padding>
             <Insets top="10" right="15" bottom="10" left="15"/>
         </padding>
@@ -22,6 +22,6 @@
         <Label text="图书管理系统后台" styleClass="font-gray" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2"/>
         <TextField promptText="账号" focusTraversable="false" fx:id="accountField" GridPane.rowIndex="2"/>
         <PasswordField promptText="密码" focusTraversable="false" fx:id="passwordField" GridPane.rowIndex="3"/>
-        <Button text="登入" styleClass="login-btn" onAction="#login" GridPane.rowIndex="4"/>
+        <Button text="登入" styleClass="login-btn,btn-radius" onAction="#login" GridPane.rowIndex="4"/>
     </GridPane>
 </StackPane>

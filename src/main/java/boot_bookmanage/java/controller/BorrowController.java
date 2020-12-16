@@ -6,6 +6,7 @@ import boot_bookmanage.java.entities.Borrow;
 import boot_bookmanage.java.service.BorrowService;
 import boot_bookmanage.java.utils.ComponentUtil;
 import boot_bookmanage.java.utils.ExcelExport;
+import boot_bookmanage.java.utils.IconUtil;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ChangeListener;
@@ -38,7 +39,7 @@ import java.util.concurrent.Executors;
  * @program: boot_bookManagement
  * @packagename: boot_bookmanage.java.controller
  * @Description 借阅查询界面
- * TODO 解决卡住的问题
+ * TODO
  * @create 2020-12-06-6:46 下午
  */
 @FXMLController
@@ -56,6 +57,8 @@ public class BorrowController implements Initializable {
     //布局文件中的输入文本框对象，用来输入搜索图书名称关键词
     @FXML
     private TextField bNameField;
+    @FXML
+    private Button returnButton,searchButton,downloadButton,addButton;
 
     //表格中的归还列
     private TableColumn<Borrow,Borrow> returnCol = new TableColumn<>("操作");
@@ -68,6 +71,8 @@ public class BorrowController implements Initializable {
 
     @Autowired
     BorrowService borrowService;
+    @Autowired
+    IconUtil iconUtil;
 
     private List<Borrow> borrowList = null;
 
@@ -84,6 +89,10 @@ public class BorrowController implements Initializable {
     //初始化方法，通过调用对图书表格和列表下拉框的两个封装方法，实现数据初始化
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        iconUtil.setIcon(returnButton,"icon/return.png",35);
+        iconUtil.setIcon(searchButton,"icon/search.png",30);
+        iconUtil.setIcon(downloadButton,"icon/download.png",35);
+        iconUtil.setIcon(addButton,"icon/addcell.png",35);
         initTable();
         initComBox();
     }
@@ -101,7 +110,8 @@ public class BorrowController implements Initializable {
         //3.删除列的相关设置
         returnCol.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
         returnCol.setCellFactory(param -> new TableCell<Borrow, Borrow>() {
-            private final Button returnButton = ComponentUtil.getButton("归还", "warning-theme");
+//            private final Button returnButton = ComponentUtil.getButton("归还", "warning-theme");
+        private final Button returnButton = ComponentUtil.getButton("sameDefault-theme");
 
             @Override
             protected void updateItem(Borrow borrow, boolean empty) {
@@ -111,6 +121,7 @@ public class BorrowController implements Initializable {
                     return;
                 }
                 setGraphic(returnButton);
+                iconUtil.setIcon(returnButton,"icon/close.png",35);
                 //点击归还按钮，需要将这一行从表格移除，同时从底层数据库真正删除
                 returnButton.setOnAction(event -> {
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -230,7 +241,7 @@ public class BorrowController implements Initializable {
         infoLabel.setPrefWidth(580);
         infoLabel.setAlignment(Pos.CENTER);
         //给文本添加样式
-        infoLabel.getStyleClass().addAll("green-theme", "font-title");
+        infoLabel.getStyleClass().addAll("gray-theme", "font-title");
         List<String> readerlist = borrowService.getAllReadersName();
         //将list中的数据加入observableList
         ObservableList<String> observableList = FXCollections.observableArrayList();
@@ -270,7 +281,7 @@ public class BorrowController implements Initializable {
         FlowPane flowPane = new FlowPane();
         Button addBtn = new Button("新增");
         addBtn.setPrefWidth(120);
-        addBtn.getStyleClass().addAll("green-theme", "btn-radius");
+        addBtn.getStyleClass().addAll("gray-theme", "btn-radius");
         flowPane.getChildren().add(addBtn);
         flowPane.setAlignment(Pos.CENTER);
         vBox.getChildren().addAll(infoLabel, RnameComboBox, BnameComboBox, flowPane);

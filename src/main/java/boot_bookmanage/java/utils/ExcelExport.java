@@ -4,9 +4,11 @@ import boot_bookmanage.java.entities.Book;
 import boot_bookmanage.java.entities.Borrow;
 import cn.hutool.poi.excel.ExcelUtil;
 import cn.hutool.poi.excel.ExcelWriter;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class ExcelExport {
     public static void exportBook(List<Book> bookList) {
         // 通过工具类创建writer

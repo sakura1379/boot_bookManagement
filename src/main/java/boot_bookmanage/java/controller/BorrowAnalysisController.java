@@ -6,12 +6,14 @@ import boot_bookmanage.java.entities.Borrow;
 import boot_bookmanage.java.service.BookService;
 import boot_bookmanage.java.service.BorrowService;
 import boot_bookmanage.java.service.ReaderService;
+import boot_bookmanage.java.utils.IconUtil;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -30,6 +32,8 @@ import java.util.ResourceBundle;
 public class BorrowAnalysisController implements Initializable {
     @FXML
     private StackPane bookPieChart, readerPieChart;
+    @FXML
+    private Button returnButton;
 
     @Autowired
     BorrowService borrowService;
@@ -37,6 +41,8 @@ public class BorrowAnalysisController implements Initializable {
     ReaderService readerService;
     @Autowired
     BookService bookService;
+    @Autowired
+    IconUtil iconUtil;
 
     private ObservableList<PieChart.Data> pieChartData1 = FXCollections.observableArrayList();
 
@@ -44,6 +50,7 @@ public class BorrowAnalysisController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        iconUtil.setIcon(returnButton,"icon/return.png",35);
         initBookPieChart();
         initReaderPieChart();
     }

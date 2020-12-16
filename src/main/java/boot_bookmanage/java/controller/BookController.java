@@ -7,6 +7,7 @@ import boot_bookmanage.java.entities.Reader;
 import boot_bookmanage.java.service.BookService;
 import boot_bookmanage.java.utils.ComponentUtil;
 import boot_bookmanage.java.utils.ExcelExport;
+import boot_bookmanage.java.utils.IconUtil;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ChangeListener;
@@ -57,6 +58,8 @@ public class BookController implements Initializable{
     //布局文件中的下拉框组件对象，用来显示数据库中读取的所有图书类别
     @FXML
     private ComboBox typeComboBox;
+    @FXML
+    private Button returnButton,searchButton,downloadButton,addButton;
 
 
     //图书模型数据集合，可以实时相应数据变化，无需刷新
@@ -64,6 +67,8 @@ public class BookController implements Initializable{
 
     @Autowired
     BookService bookService;
+    @Autowired
+    IconUtil iconUtil;
 
     //图书集合，存放数据库图书表各种查询的结果
     private List<Book> bookList = null;
@@ -77,6 +82,10 @@ public class BookController implements Initializable{
     //初始化方法，通过调用对图书表格和列表下拉框的两个封装方法，实现数据初始化
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        iconUtil.setIcon(returnButton,"icon/return.png",35);
+        iconUtil.setIcon(searchButton,"icon/search.png",30);
+        iconUtil.setIcon(downloadButton,"icon/download.png",35);
+        iconUtil.setIcon(addButton,"icon/addcell.png",35);
         initTable();
         initComBox();
     }
@@ -95,7 +104,8 @@ public class BookController implements Initializable{
         editCol.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
         editCol.setCellFactory(param -> new TableCell<Book, Book>() {
             //通过ComponentUtil工具类的静态方法，传入按钮文字和样式，获得一个按钮对象
-            private final Button editButton = ComponentUtil.getButton("编辑", "blue-theme");
+//            private final Button editButton = ComponentUtil.getButton("编辑", "blue-theme");
+            private final Button editButton = ComponentUtil.getButton("sameDefault-theme");
 
             @Override
             protected void updateItem(Book book, boolean empty) {
@@ -105,6 +115,7 @@ public class BookController implements Initializable{
                     return;
                 }
                 setGraphic(editButton);
+                iconUtil.setIcon(editButton,"icon/editor.png",35);
                 //点击编辑按钮，弹出窗口，输入需要修改的图书价格
                 editButton.setOnAction(event -> {
                     TextInputDialog dialog = new TextInputDialog("请输入价格");
@@ -129,7 +140,8 @@ public class BookController implements Initializable{
         //3.删除列的相关设置
         delCol.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
         delCol.setCellFactory(param -> new TableCell<Book, Book>() {
-            private final Button deleteButton = ComponentUtil.getButton("删除", "warning-theme");
+//            private final Button deleteButton = ComponentUtil.getButton("删除", "warning-theme");
+            private final Button deleteButton = ComponentUtil.getButton("sameDefault-theme");
 
             @Override
             protected void updateItem(Book book, boolean empty) {
@@ -139,6 +151,7 @@ public class BookController implements Initializable{
                     return;
                 }
                 setGraphic(deleteButton);
+                iconUtil.setIcon(deleteButton,"icon/close.png",35);
                 //点击删除按钮，需要将这一行从表格移除，同时从底层数据库真正删除
                 deleteButton.setOnAction(event -> {
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -217,7 +230,7 @@ public class BookController implements Initializable{
         infoLabel.setPrefWidth(580);
         infoLabel.setAlignment(Pos.CENTER);
         //给文本添加样式
-        infoLabel.getStyleClass().addAll("green-theme", "font-title");
+        infoLabel.getStyleClass().addAll("gray-theme", "font-title");
         TextField BnameField = new TextField();
         BnameField.setPromptText("请输入书名");
         //输入框无焦点
@@ -258,12 +271,12 @@ public class BookController implements Initializable{
         FlowPane flowPane = new FlowPane();
         Button addBtn = new Button("新增");
         addBtn.setPrefWidth(120);
-        addBtn.getStyleClass().addAll("green-theme", "btn-radius");
+        addBtn.getStyleClass().addAll("gray-theme", "btn-radius");
         flowPane.getChildren().add(addBtn);
         flowPane.setAlignment(Pos.CENTER);
         vBox.getChildren().addAll(infoLabel, BnameField, typeComboBox,
                 authorField, priceField, stockField, flowPane);
-        Scene scene = new Scene(vBox, 450, 380);
+        Scene scene = new Scene(vBox, 450, 300);
         scene.getStylesheets().add("/css/style.css");
         stage.getIcons().add(new Image("/img/logo.png"));
         stage.setScene(scene);

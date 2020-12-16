@@ -4,12 +4,14 @@ import boot_bookmanage.java.BookManagementApplication;
 import boot_bookmanage.java.FxmlView.*;
 import boot_bookmanage.java.entities.Admin;
 import boot_bookmanage.java.service.AdminService;
+import boot_bookmanage.java.utils.IconUtil;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -42,6 +44,8 @@ public class PersonalController implements Initializable {
     private TextField adminPassword;
     @FXML
     private ImageView adminImg;
+    @FXML
+    private Button editButton,saveButton;
 
     @Autowired
     AdminService adminService;
@@ -62,6 +66,9 @@ public class PersonalController implements Initializable {
     @Autowired
     PersonalController personalController;
 
+    @Autowired
+    IconUtil iconUtil;
+
     private Admin admin;
 
     public void setAdmin(Admin admin) {
@@ -80,6 +87,8 @@ public class PersonalController implements Initializable {
                 circle.setCenterX(20.0);
                 circle.setCenterY(20.0);
                 circle.setRadius(20.0);
+                iconUtil.setIcon(editButton,"icon/editor.png",35);
+                iconUtil.setIcon(saveButton,"icon/save.png",35);
                 adminAvatar.setClip(circle);
                 //显示管理员姓名
                 adminName.setText(admin.getAccount());

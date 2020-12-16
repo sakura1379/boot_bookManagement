@@ -10,7 +10,7 @@
 <?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.image.ImageView?>
-<BorderPane styleClass="green-theme"
+<BorderPane styleClass="gray-theme"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="boot_bookmanage.java.controller.ReaderController">
     <top>
@@ -31,7 +31,7 @@
                        AnchorPane.rightAnchor="150">
             </ImageView>
             <Label fx:id="adminName" AnchorPane.topAnchor="30" AnchorPane.rightAnchor="130" styleClass="font-white"/>
-            <Button text="退出系统" styleClass="blue-theme" onAction="#logout"
+            <Button fx:id="logoutButton" styleClass="gray-theme" onAction="#logout"
                     AnchorPane.topAnchor="20" AnchorPane.rightAnchor="20"/>
             <!--            <Button text="退出系统" styleClass="blue-theme"-->
             <!--                    AnchorPane.topAnchor="20" AnchorPane.rightAnchor="20"/>-->
@@ -90,7 +90,7 @@
                         vbarPolicy="AS_NEEDED" styleClass="default-theme">
                 <StackPane fx:id="mainContainer" styleClass="default-theme" minWidth="1060" minHeight="600">
                     <AnchorPane>
-                        <Button text="新增读者" styleClass="green-theme" onAction="#addReader"
+                        <Button fx:id="addButton" styleClass="sameDefault-theme" onAction="#addReader"
                                 AnchorPane.topAnchor="5" AnchorPane.leftAnchor="10"/>
                         <FlowPane fx:id="readerPane" hgap="10" vgap="10"
                                   AnchorPane.topAnchor="50"

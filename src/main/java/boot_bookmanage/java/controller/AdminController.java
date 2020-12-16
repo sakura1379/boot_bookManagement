@@ -5,6 +5,7 @@ import boot_bookmanage.java.FxmlView.*;
 import boot_bookmanage.java.entities.Admin;
 import boot_bookmanage.java.entities.Reader;
 import boot_bookmanage.java.service.AdminService;
+import boot_bookmanage.java.utils.IconUtil;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -59,10 +60,13 @@ public class AdminController implements Initializable {
     private ImageView adminAvatar;
     @FXML
     private Label adminName;
+    @FXML
+    private Button logoutButton,addButton;
 
     @Autowired
     PersonalController personalController;
-
+    @Autowired
+    IconUtil iconUtil;
     @Autowired
     ReaderController readerController;
 
@@ -84,6 +88,8 @@ public class AdminController implements Initializable {
                 circle.setCenterX(20.0);
                 circle.setCenterY(20.0);
                 circle.setRadius(20.0);
+                iconUtil.setIcon(logoutButton,"icon/home.png",35);
+                iconUtil.setIcon(addButton,"icon/add-account.png",35);
                 adminAvatar.setClip(circle);
                 //显示管理员姓名
                 adminName.setText(admin.getAccount());
@@ -209,7 +215,7 @@ public class AdminController implements Initializable {
         infoLabel.setPrefWidth(580);
         infoLabel.setAlignment(Pos.CENTER);
         //给文本添加样式
-        infoLabel.getStyleClass().addAll("green-theme", "font-title");
+        infoLabel.getStyleClass().addAll("gray-theme", "font-title");
         TextField accountField = new TextField();
         accountField.setPromptText("请输入管理员姓名");
         //输入框无焦点
@@ -222,7 +228,7 @@ public class AdminController implements Initializable {
         FlowPane flowPane = new FlowPane();
         Button addBtn = new Button("新增");
         addBtn.setPrefWidth(120);
-        addBtn.getStyleClass().addAll("green-theme", "btn-radius");
+        addBtn.getStyleClass().addAll("gray-theme", "btn-radius");
         flowPane.getChildren().add(addBtn);
         flowPane.setAlignment(Pos.CENTER);
         vBox.getChildren().addAll(infoLabel, accountField, passwordField, flowPane);

@@ -8,17 +8,21 @@
 <?import javafx.scene.control.ComboBox?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="boot_bookmanage.java.controller.BookController">
+            fx:controller="boot_bookmanage.java.controller.BookController" styleClass="default-theme">
     <HBox alignment="BOTTOM_CENTER" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" spacing="10">
-        <Button styleClass="green-theme,btn-radius" text="添加图书" onAction="#newBookStage"/>
-        <Button styleClass="blue-theme,btn-radius" text="导出数据" onAction="#export"/>
-        <Button styleClass="dark-theme,btn-radius,font-white" text="返回主界面" onAction="#logout"/>
+<!--        <Button fx:id="returnButton" styleClass="dark-theme,btn-radius,font-white" text="返回主界面" onAction="#logout"/>-->
+<!--        <Button fx:id="addButton" styleClass="green-theme,btn-radius" text="添加图书" onAction="#newBookStage"/>-->
+<!--        <Button fx:id="downloadButton" styleClass="blue-theme,btn-radius" text="导出数据" onAction="#export"/>-->
+        <Button fx:id="returnButton" styleClass="sameDefault-theme,btn-radius" onAction="#logout"/>
+        <Button fx:id="addButton" styleClass="sameDefault-theme,btn-radius" onAction="#newBookStage"/>
+        <Button fx:id="downloadButton" styleClass="sameDefault-theme,btn-radius" onAction="#export"/>
     </HBox>
     <HBox alignment="CENTER" AnchorPane.topAnchor="60" AnchorPane.leftAnchor="10" spacing="10">
 <!--        <ComboBox promptText="图书类别" fx:id="typeComboBox" prefWidth="150"/>-->
         <ComboBox promptText="选择图书类别" fx:id="typeComboBox" prefWidth="150"/>
         <TextField promptText="请输入关键词" fx:id="keywordsField"/>
-        <Button styleClass="green-theme" text="搜索" onAction="#search"/>
+<!--        <Button fx:id="searchButton" styleClass="green-theme" text="搜索" onAction="#search"/>-->
+        <Button fx:id="searchButton" styleClass="sameDefault-theme,btn-radius" onAction="#search"/>
     </HBox>
     <TableView fx:id="bookTable" prefWidth="1000"
                AnchorPane.topAnchor="110" AnchorPane.leftAnchor="10">

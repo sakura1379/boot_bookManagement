@@ -6,32 +6,32 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.text.Font?>
-<BorderPane styleClass="green-theme"
+<BorderPane styleClass="gray-theme"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="boot_bookmanage.java.controller.PersonalController">
-<top>
-    <AnchorPane prefHeight="80.0">
-        <Label text="图书后台管理系统" onMouseClicked="#listDefault"
-               AnchorPane.topAnchor="20" AnchorPane.leftAnchor="10">
-            <!--            <Label text="图书后台管理系统"-->
-            <!--                   AnchorPane.topAnchor="20" AnchorPane.leftAnchor="10">-->
-            <effect>
-                <Reflection bottomOpacity="0.2" fraction="0.5" topOffset="-5.0"/>
-            </effect>
-            <font>
-                <Font name="System Bold" size="26.0"/>
-            </font>
-        </Label>
-        <Label fx:id="timeLabel" AnchorPane.topAnchor="30" AnchorPane.rightAnchor="200" styleClass="font-white"/>
-        <ImageView fx:id="adminAvatar" fitWidth="40" fitHeight="40" AnchorPane.topAnchor="15"
-                   AnchorPane.rightAnchor="150">
-        </ImageView>
-        <Label fx:id="adminName" AnchorPane.topAnchor="30" AnchorPane.rightAnchor="130" styleClass="font-white"/>
-        <Button text="退出系统" styleClass="blue-theme" onAction="#logout"
-                AnchorPane.topAnchor="20" AnchorPane.rightAnchor="20"/>
-        <!--            <Button text="退出系统" styleClass="blue-theme"-->
-        <!--                    AnchorPane.topAnchor="20" AnchorPane.rightAnchor="20"/>-->
-    </AnchorPane>
+    <top>
+        <AnchorPane prefHeight="80.0">
+            <Label text="图书后台管理系统" onMouseClicked="#listDefault"
+                   AnchorPane.topAnchor="20" AnchorPane.leftAnchor="10">
+                <!--            <Label text="图书后台管理系统"-->
+                <!--                   AnchorPane.topAnchor="20" AnchorPane.leftAnchor="10">-->
+                <effect>
+                    <Reflection bottomOpacity="0.2" fraction="0.5" topOffset="-5.0"/>
+                </effect>
+                <font>
+                    <Font name="System Bold" size="26.0"/>
+                </font>
+            </Label>
+            <Label fx:id="timeLabel" AnchorPane.topAnchor="30" AnchorPane.rightAnchor="200" styleClass="font-white"/>
+            <ImageView fx:id="adminAvatar" fitWidth="40" fitHeight="40" AnchorPane.topAnchor="15"
+                       AnchorPane.rightAnchor="150">
+            </ImageView>
+            <Label fx:id="adminName" AnchorPane.topAnchor="30" AnchorPane.rightAnchor="130" styleClass="font-white"/>
+            <Button fx:id="logoutButton" styleClass="gray-theme" onAction="#logout"
+                    AnchorPane.topAnchor="20" AnchorPane.rightAnchor="20"/>
+            <!--            <Button text="退出系统" styleClass="blue-theme"-->
+            <!--                    AnchorPane.topAnchor="20" AnchorPane.rightAnchor="20"/>-->
+        </AnchorPane>
 </top>
 <center>
     <SplitPane>
@@ -90,11 +90,11 @@
                                fitWidth="120" fitHeight="120">
                     </ImageView>
                     <VBox AnchorPane.topAnchor="20" AnchorPane.leftAnchor="180" spacing="20">
-                        <Label fx:id="adminName" styleClass="font-title" text="姓名"/>
+                        <Label fx:id="adminName1" styleClass="font-title" text="姓名"/>
                         <TextField fx:id="adminPassword" editable="false" text="密码" styleClass="gray-theme"/>
                         <HBox spacing="30">
-                            <Button text="修改密码" styleClass="green-theme" onAction="#edit"/>
-                            <Button text="保存" styleClass="blue-theme" onAction="#save"/>
+                            <Button fx:id="editButton" text="修改密码" styleClass="sameDefault-theme" onAction="#edit"/>
+                            <Button fx:id="saveButton" text="保存" styleClass="sameDefault-theme" onAction="#save"/>
                         </HBox>
                     </VBox>
                 </AnchorPane>

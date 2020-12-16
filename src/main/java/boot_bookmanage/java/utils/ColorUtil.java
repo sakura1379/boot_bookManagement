@@ -1,10 +1,13 @@
 package boot_bookmanage.java.utils;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Random;
 
 /**
  * 颜色工具类，用来随机获取一种颜色
  */
+@Component
 public class ColorUtil {
     private static String[] colors = {
             "##99BBFF", "#9999FF", "#9F88FF", "#B088FF","#F0BBFF",

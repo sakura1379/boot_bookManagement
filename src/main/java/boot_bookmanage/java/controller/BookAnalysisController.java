@@ -3,12 +3,14 @@ package boot_bookmanage.java.controller;
 import boot_bookmanage.java.BookManagementApplication;
 import boot_bookmanage.java.FxmlView.MainFxmlView;
 import boot_bookmanage.java.service.BookService;
+import boot_bookmanage.java.utils.IconUtil;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.*;
+import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +31,19 @@ import java.util.ResourceBundle;
 public class BookAnalysisController implements Initializable {
     @FXML
     private StackPane pieChartPane, barChartPane;
+    @FXML
+    private Button returnButton;
 
     @Autowired
     BookService bookService;
+    @Autowired
+    IconUtil iconUtil;
 
     private ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        iconUtil.setIcon(returnButton,"icon/return.png",35);
         initPieChart();
         initBarChart();
     }

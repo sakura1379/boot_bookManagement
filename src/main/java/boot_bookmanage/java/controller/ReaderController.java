@@ -5,6 +5,8 @@ import boot_bookmanage.java.FxmlView.*;
 import boot_bookmanage.java.entities.Admin;
 import boot_bookmanage.java.entities.Reader;
 import boot_bookmanage.java.service.ReaderService;
+import boot_bookmanage.java.utils.ComponentUtil;
+import boot_bookmanage.java.utils.IconUtil;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -18,6 +20,9 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -25,10 +30,12 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.awt.*;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.List;
 
 
 /**
@@ -55,10 +62,13 @@ public class ReaderController implements Initializable {
     private ImageView adminAvatar;
     @FXML
     private Label adminName;
+    @FXML
+    private Button logoutButton,addButton;
 
     @Autowired
     PersonalController personalController;
-
+    @Autowired
+    IconUtil iconUtil;
     @Autowired
     AdminController adminController;
 
@@ -82,6 +92,8 @@ public class ReaderController implements Initializable {
                 circle.setCenterX(20.0);
                 circle.setCenterY(20.0);
                 circle.setRadius(20.0);
+                iconUtil.setIcon(logoutButton,"icon/home.png",35);
+                iconUtil.setIcon(addButton,"icon/add-account.png",35);
                 adminAvatar.setClip(circle);
                 //显示管理员姓名
                 adminName.setText(account);
@@ -186,8 +198,8 @@ public class ReaderController implements Initializable {
             Label departmentLabel = new Label(reader.getDepartment());
             Label emailLabel = new Label(reader.getEmail());
             Label mobileLabel = new Label(reader.getMobile());
-            Button delBtn = new Button("删除");
-            delBtn.getStyleClass().add("warning-theme");
+            Button delBtn = ComponentUtil.getButton("删除","sameDefault-theme");
+            iconUtil.setIcon(delBtn,"icon/close.png",35);
             rightBox.getChildren().addAll(nameLabel, departmentLabel,
                     emailLabel, mobileLabel,  delBtn);
             //左右两个垂直布局加入水平布局
@@ -227,7 +239,7 @@ public class ReaderController implements Initializable {
         infoLabel.setPrefWidth(580);
         infoLabel.setAlignment(Pos.CENTER);
         //给文本添加样式
-        infoLabel.getStyleClass().addAll("green-theme", "font-title");
+        infoLabel.getStyleClass().addAll("gray-theme", "font-title");
         TextField nameField = new TextField();
         nameField.setPromptText("请输入姓名");
         //输入框无焦点
@@ -287,12 +299,12 @@ public class ReaderController implements Initializable {
         FlowPane flowPane = new FlowPane();
         Button addBtn = new Button("新增");
         addBtn.setPrefWidth(120);
-        addBtn.getStyleClass().addAll("green-theme", "btn-radius");
+        addBtn.getStyleClass().addAll("gray-theme", "btn-radius");
         flowPane.getChildren().add(addBtn);
         flowPane.setAlignment(Pos.CENTER);
         vBox.getChildren().addAll(infoLabel, nameField, roleBox, depComboBox,
                 emailField, mobileField, flowPane);
-        Scene scene = new Scene(vBox, 450, 380);
+        Scene scene = new Scene(vBox, 450, 300);
         scene.getStylesheets().add("/css/style.css");
         stage.getIcons().add(new Image("/img/logo.png"));
         stage.setScene(scene);

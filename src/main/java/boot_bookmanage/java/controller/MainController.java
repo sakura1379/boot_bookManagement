@@ -4,6 +4,7 @@ import boot_bookmanage.java.BookManagementApplication;
 import boot_bookmanage.java.FxmlView.*;
 import boot_bookmanage.java.entities.Admin;
 import boot_bookmanage.java.entities.Reader;
+import boot_bookmanage.java.utils.IconUtil;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -12,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -45,6 +47,8 @@ public class MainController implements Initializable {
     private ImageView adminAvatar;
     @FXML
     private Label adminName;
+    @FXML
+    private Button logoutButton;
 
     @Autowired
     ReaderController readerController;
@@ -55,11 +59,15 @@ public class MainController implements Initializable {
     @Autowired
     PersonalController personalController;
 
+    @Autowired
+    IconUtil iconUtil;
+
 //    private String account;
 //
 //    public void setAccount(String account) {
 //        this.account = account;
 //    }
+//    private String homeIcon  = getClass().getResource("src/main/resources/icon/home.png").toString();
 
     private Admin admin;
 
@@ -82,6 +90,7 @@ public class MainController implements Initializable {
                 adminAvatar.setClip(circle);
                 //显示管理员姓名
                 adminName.setText(admin.getAccount());
+                iconUtil.setIcon(logoutButton,"icon/home.png",35);
             }
         });
         //启一个线程，用来同步获取系统时间
