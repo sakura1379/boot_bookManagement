@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.StackPane?>
+<StackPane prefHeight="600" prefWidth="1000" stylesheets="@/css/style.css" xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="boot_bookmanage.java.controller.LoginController" styleClass="login-bg">
+    <padding>
+        <Insets top="150" right="250" bottom="150" left="250"/>
+    </padding>
+<!--    <GridPane AnchorPane.topAnchor="100" AnchorPane.leftAnchor="250" alignment="center" styleClass="login-card" vgap="15">-->
+    <GridPane StackPane.alignment="CENTER" alignment="center" styleClass="login-card" vgap="15" opacity="0.8">
+        <padding>
+            <Insets top="10" right="15" bottom="10" left="15"/>
+        </padding>
+        <Label text="系统管理员登录" styleClass="login-title" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
+        <Label text="图书管理系统后台" styleClass="font-gray" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2"/>
+        <TextField promptText="账号" focusTraversable="false" fx:id="accountField" GridPane.rowIndex="2"/>
+        <PasswordField promptText="密码" focusTraversable="false" fx:id="passwordField" GridPane.rowIndex="3"/>
+        <Button text="登入" styleClass="login-btn" onAction="#login" GridPane.rowIndex="4"/>
+    </GridPane>
+</StackPane>

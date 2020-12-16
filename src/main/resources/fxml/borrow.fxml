@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="boot_bookmanage.java.controller.BorrowController">
+
+    <HBox alignment="BOTTOM_CENTER" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" spacing="10">
+        <Button styleClass="green-theme,btn-radius" text="添加借阅" onAction="#newBorrowStage"/>
+        <Button styleClass="blue-theme,btn-radius" text="导出数据" onAction="#export"/>
+        <Button styleClass="dark-theme,btn-radius,font-white" text="返回主界面" onAction="#logout"/>
+    </HBox>
+
+    <HBox alignment="CENTER" AnchorPane.topAnchor="60" AnchorPane.leftAnchor="10" spacing="10">
+        <!--        <ComboBox promptText="图书类别" fx:id="typeComboBox" prefWidth="150"/>-->
+        <ComboBox promptText="选择读者名字" fx:id="readerComboBox" prefWidth="150"/>
+        <TextField promptText="请输入图书名称" fx:id="bNameField"/>
+        <Button styleClass="green-theme" text="搜索" onAction="#search"/>
+    </HBox>
+    <TableView fx:id="borrowTable" prefWidth="1000"
+               AnchorPane.topAnchor="110" AnchorPane.leftAnchor="10">
+        <columns>
+            <TableColumn text="ID">
+                <cellValueFactory>
+                    <PropertyValueFactory property="id"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="书名">
+                <cellValueFactory>
+                    <PropertyValueFactory property="Bname"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="读者">
+                <cellValueFactory>
+                    <PropertyValueFactory property="name"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="借阅时间">
+                <cellValueFactory>
+                    <PropertyValueFactory property="borrow_date"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+</AnchorPane>

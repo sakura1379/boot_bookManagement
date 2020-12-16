@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.geometry.Insets?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="boot_bookmanage.java.controller.DefaultController">
+<!--    <HBox AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"-->
+<!--          AnchorPane.rightAnchor="0" prefHeight="400" spacing="10">-->
+<!--    <StackPane AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"-->
+<!--               AnchorPane.rightAnchor="0" prefHeight="400" styleClass="box">-->
+    <ImageView AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" fx:id="bookImg" fitWidth="700" fitHeight="400">
+    </ImageView>
+<!--    </StackPane>-->
+<!--        <GridPane hgap="40" vgap="30" prefHeight="300" prefWidth="380" styleClass="box">-->
+<!--            <StackPane GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="box,green-theme,hover-change" prefWidth="160"-->
+<!--                       prefHeight="130">-->
+<!--                <Label text="类别" fx:id="typeCount" styleClass="font-title"/>-->
+<!--            </StackPane>-->
+<!--            <StackPane GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="box,blue-theme,hover-change" prefWidth="160"-->
+<!--                       prefHeight="130">-->
+<!--                <Label text="图书" fx:id="bookCount" styleClass="font-title"/>-->
+<!--            </StackPane>-->
+<!--            <StackPane GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="box,warm-theme,hover-change" prefWidth="160"-->
+<!--                       prefHeight="130">-->
+<!--                <Label text="读者" fx:id="readerCount" styleClass="font-title"/>-->
+<!--            </StackPane>-->
+<!--            <StackPane GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="box,warning-theme,hover-change" prefWidth="160"-->
+<!--                       prefHeight="130">-->
+<!--                <Label text="管理员" fx:id="adminCount" styleClass="font-title"/>-->
+<!--            </StackPane>-->
+<!--        </GridPane>-->
+<!--    </HBox>-->
+<!--    <AnchorPane AnchorPane.topAnchor="320" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="30" styleClass="box"-->
+<!--                maxWidth="850">-->
+<!--        <fx:include source="book_analysis.fxml"/>-->
+<!--    </AnchorPane>-->
+</AnchorPane>
